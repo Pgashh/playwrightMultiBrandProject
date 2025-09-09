@@ -1,0 +1,52 @@
+{
+  "name": "playwright-multibrand-framework",
+  "version": "1.0.0",
+  "description": "Tag-based multi-brand Playwright test automation framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    
+    "test:smoke": "playwright test --grep=\"@smoke\"",
+    "test:regression": "playwright test --grep=\"@regression\"",
+    "test:universal": "playwright test --grep=\"@universal\"",
+    "test:mobile": "playwright test --grep=\"@mobile\"",
+    "test:performance": "playwright test --grep=\"@performance\"",
+    
+    "test:brand1": "BRAND=brand1 MARKET=en TEST_ENV=staging playwright test --grep=\"(@brand1|@universal)\"",
+    "test:brand1:smoke": "BRAND=brand1 MARKET=en TEST_ENV=staging playwright test --grep=\"@smoke.*(@brand1|@universal)\"",
+    "test:brand2": "BRAND=brand2 MARKET=en TEST_ENV=staging playwright test --grep=\"(@brand2|@universal)\"",
+    "test:brand2:smoke": "BRAND=brand2 MARKET=en TEST_ENV=staging playwright test --grep=\"@smoke.*(@brand2|@universal)\"",
+    "test:brand3": "BRAND=brand3 MARKET=en TEST_ENV=staging playwright test --grep=\"(@brand3|@universal)\"",
+    "test:brand3:smoke": "BRAND=brand3 MARKET=en TEST_ENV=staging playwright test --grep=\"@smoke.*(@brand3|@universal)\"",
+    
+    "test:staging": "TEST_ENV=staging playwright test --grep=\"@smoke\"",
+    "test:prelive": "TEST_ENV=prelive playwright test --grep=\"@smoke\"",
+    "test:production": "TEST_ENV=production playwright test --grep=\"@smoke\"",
+    
+    "test:setup-check": "playwright test tests/setup-check.spec.ts",
+    "test:dry-run": "playwright test --list",
+    
+    "setup": "npm install && npx playwright install",
+    "type-check": "npx tsc --noEmit --skipLibCheck"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "multi-brand",
+    "automation",
+    "e2e",
+    "framework",
+    "tags"
+  ],
+  "author": "Petar Gashovski",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
